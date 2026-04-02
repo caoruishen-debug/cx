@@ -1,0 +1,465 @@
+---
+import MainLayout from '../layouts/MainLayout.astro';
+
+const categories = [
+  {
+    name: 'Sofas',
+    subtitle: 'Heritage Comfort',
+    className: 'category-sofas category-large',
+    image:
+      'https://lh3.googleusercontent.com/aida-public/AB6AXuDpBG7aNAdD_5-j3s9cbDJfCa1eYYyTTGAZ2hNFMLO3jfyCySY8Z3KejS-GBYRDj_zt6xo8JOTYHjwtLg67GoQSOu4vfsv0evxRd6hndmjCIyReaL2fIMFvk8Wx52TqfdhF-O504p3IDbR3XVO9ef70msyjuRH2KPumKFiLaCt4qH2RGj3keqx-f6g1Z9R3dB0n6InNTKcp5ded7Z5_6Rsnx6O6vy8Xgo_E9u-Kv333XYUnMnA9jXlKAw28mcXHWwVU3Bn1h7XxeIpT',
+  },
+  {
+    name: 'Tables',
+    subtitle: 'Communal Spirit',
+    className: 'category-tables category-wide',
+    image:
+      'https://lh3.googleusercontent.com/aida-public/AB6AXuCka-bO0f5leN2PFWlhrTxLSzGANP4_EdSGaRhCMlnC4fOIKCki-RkW-tWFBXyXu0KUyvvbHci49kxrBwXVCvfly4__Gv1fkWi-St33dafKPd1tA5wIm2D29NRaZC9YP8WGnIL-2cdSvFCoJ9TadNfxHhdbglLaWkFFv_N2tRU_CekwYVeL3KgrpW3OTO7RWwwCSJpco0otBPss1tv2Vs-Kg8ND_2vk6Py22Jld5_rD_ebAPlb5y9RwerEF18TGbLwfJod1ePCADkIP',
+  },
+  {
+    name: 'Lighting',
+    subtitle: 'Atmospheric',
+    className: 'category-lighting',
+    image:
+      'https://lh3.googleusercontent.com/aida-public/AB6AXuAXvj6bhUQg_hP0Rdn6qk0sMx8AozzclM8KG8JUBv3vHOxVLKOQ-uFbRZ2COGrq31w1fB2HzMNpN1_Iz8aN-c8P0-Qrr2FiFV1Tt0yY4VVStWDNbTzrZMe2cpagdAbn5-ipayOvybPAoxWABvka8ZH2a78UVLbzYwu0H6eVrv6RncbFfLb78sYmrZLlMUKReJADHskW1WMXIM8rMiHUQv3BBKceju5T-NY89OrNzdhNXiHe269JUeCsT_ci6uCqmllfNLAlBrS_3zEL',
+  },
+  {
+    name: 'Decor',
+    subtitle: 'Final Touches',
+    className: 'category-decor',
+    image:
+      'https://lh3.googleusercontent.com/aida-public/AB6AXuAlZyCv9DC0GEdVMeVikc3wPAeI0M0T-4xt0Pyv1nkS0IBrrwcbJLeY12ONexp4UjCvWDFwBEKwq3IfaKTfQ3gsNoGXIrRxHAMj0G1wnDYBgXpSL0y863_1Cy92N-0qYZIr71sv96Mpwi7lnUh0M2zbZLVZqZl_1069vykHRgXHMPddQ3rsmTE0Xa0ErZrb8hHarUmRiOCA-dKCRrtxwJyVZ7rBd2mc6e1SnJikbcckD0ltjeq4XT1oRY8wKYR9P0qIQwAm17ZimIsu',
+  },
+];
+
+const products = [
+  {
+    name: 'Elowen Lounge Chair',
+    meta: 'Walnut & Boucle',
+    price: '$1,850',
+    className: 'product-chair',
+    image:
+      'https://lh3.googleusercontent.com/aida-public/AB6AXuBX_g3wXZwPV8Va7lNNsJ-Xlz987EVLKq-7gClpATI0WCUW5xEMl60D5KeE10y9K15-LW4VLFNXMlz0Ndl64Ek8SDAevuLKKp3mXJYdvdCR6sxzA0EwpYDuhDuK9AN4t9fbUYDQ4BDOOVNqAmGrfXNr0ShQEO2DYBl9I8Uf84rHwOs41TQci9H4BqVfee0610vdCQpjL2N6yQnvBMF4OHDrdOsn9kawmQDXVnTlu6nPFypKDdDm_1Er2upXfbuZvv7_rHa4a0jsre5D',
+  },
+  {
+    name: 'Nero Marble Table',
+    meta: 'Black Nero Marquina',
+    price: '$2,400',
+    className: 'product-table',
+    image:
+      'https://lh3.googleusercontent.com/aida-public/AB6AXuCqiWheTofP1VUM3hTWCAHarEqC6MZ1L-8OeWFL4qE_oVO8twEyKmscLFBQmCRcZqcLFCwoRjeCfIufjOprCCREQwLOKO2OS-N1VTX8lfsPMJOdePdMqPjhcUiiZn_f5PqUBOJy7fE01L6arYDm98zRbOe3Dvb_IRbsCT6RM-d28zPE-eJ-nVPlFH69XjkCnkvvbsNVI6sTrr7q3GjjVTtirbqtu6FFv6N1vxrjmgM7pFThufZZLFGtq2E-uUBYh5tmUvhvdws_UOFs',
+  },
+  {
+    name: 'Arbor Library Unit',
+    meta: 'Solid White Oak',
+    price: '$3,100',
+    className: 'product-shelf',
+    image:
+      'https://lh3.googleusercontent.com/aida-public/AB6AXuBUdtlsnbB1oBrPd5CGN2jZ2TmD1gn8Xp1ivK556zxRxIuDZ2nY3_56imfVw0mqUbhKp1_XWKjN03A6DLsP4MKkcknx3PxSIDitBQhMgTYz-i0PTTm8wYXGPFUhXe26bBQW1stZO7GenGtuGP4jsmZjalT8YihoF_lu2xK1hZYZW9vspjdoPBW9BXEKaUtczFABIH3Fvyes9YM0Ys9Klhscbo9b6Gt88YDR2J0d1OD7pi31KwtG1Zs5t4ikbDTHDqzHFyQx6euS26As',
+  },
+  {
+    name: 'Orbital Pendant',
+    meta: 'Hand-Blown Glass',
+    price: '$950',
+    className: 'product-pendant',
+    image:
+      'https://lh3.googleusercontent.com/aida-public/AB6AXuAFY0Yf9COvzdf87DEzWFR_I3QjdF7d2Iv5Vm1HuQ1xGn7D1jQa79nAsnTMcnmgj4Ebxzf6J8ij5-MuWQh3xDnNlRs33KT8cusKdfLfgquSf-OttbuArEO5Wpwin_MKjEop_wIH-hAknVJewmvbpBZ1wT9_aXRd5rL4CLPymjZhv9UUa_X-qwxb_gXoaNaUeXO60x65desTL0xrcjHx7BNIDytzZVmASjoGmSIV6WBZxKW5zlP_7QM60F9nHpOklyYOSqNNWKJAN2P0',
+  },
+];
+
+const heroImage =
+  'https://lh3.googleusercontent.com/aida-public/AB6AXuD-l-vd34rWNmsHp3TWTtlF8E6sywG86qUlyGgXQHTwFXheU0Sbh2FDXukpVsi6SiG8V3m_AB6Int91nQBHQhXvZkmTmgN8FDEDAqCJwN_DHuLzNfyuwUzh4NPVLjDUQAgTUjGkGDDpR-p3sthc7bqqi-foyxRSm207by411s9vxU35CQzd6KamSvU1_dgJZDmT4GDfpxXU26E9d3xW8LrM1moMl9EGjkKHlpEPG0LOl5srfU0aO5kTnGVE6R0RXfO7O-X5mfMNJsWU';
+
+const storyPrimaryImage =
+  'https://lh3.googleusercontent.com/aida-public/AB6AXuA840wqgBbZYJRiFMPfnk7gfAcMu3aV9SkNBnZaTZzU4u2H3TpSKWqn5DjHtF4kGzBxrhK7b5A_Kt8AyTPUrZY2qW31yVSxDg2MKWav8F4E1B5vsktHRBpWv3Q_TMycH6MfQKGiQZ33h-TqGyZsmP1fncC2PjxkPaOgoWuZGhdcUwy4HaarMc2O52vqahZNdynSjkv12q3Ruox4wnNunJf6j5WLD-FKBKtg9PJVDq4ABYNEJ-ZlrJrKpOwNn9U1KXLO0aylfZx9T8Xq';
+
+const storyDetailImage =
+  'https://lh3.googleusercontent.com/aida-public/AB6AXuDRW3fFwVC4-WYzYj6ZQOn8dDV2k0tyUofqKnPJ2ZdQdsR9J4PKmC4shcQ-VLVgl1j8UpEbhp-4OUaADbqR5BY3eHBynTl5MD39PikM9Z4FS3MabPkFViTDWe_DbS6wVpBkBQBuufIXWbHUV4mP-6Yihgoyt3Bzb8pwZGj1mogUhj9Om1hwyiKYOetLVY5uoob6WNDp08E_CzOHKxf8uAwB0A3vo2xrNT929hBasYE3DR1FKzWW7prLylprQ2x7A8l_Li3P5IRPpKvz';
+
+const lifestyleImage =
+  'https://lh3.googleusercontent.com/aida-public/AB6AXuD3bkCxSukzueQ7fger3NiYZXxWFtDtq9gpFZ9CeW4MRxuEVEVnczBaOpTH5pnacQszEqbMtITdSbPgAuBBLMxDnAsvPsDIAFhUJF6LswPjnNxei-fhS-geKckUF5MawhLKGloMUoRuQ6E2K0A9yEJZOZY05JvJyI55j20ibF6wB-IHJb7RXfc9gYosRXYZHt0tdc-7fv-n5wZdbCv5D5248wTAUM8B6tV0VhzogmGeu11JqCmGPKAl3PX_Ukmlhrvyr5dA8EmaMIu-';
+
+const footerGroups = [
+  {
+    title: 'Collections',
+    links: ['Living Room', 'Dining', 'Bedroom', 'Office'],
+  },
+  {
+    title: 'About',
+    links: ['Our Story', 'Journal', 'Sustainability', 'Trade'],
+  },
+];
+
+const brandStrip = ['Cassina', 'Knoll', 'B&B Italia', 'Flos', 'Vitra', 'Carl Hansen'];
+---
+
+<MainLayout
+  title="The Curated Home | Heritage Furniture"
+  description="高端家居品牌官网首页，基于 Stitch 设计稿重建，强调白字 Hero、编辑感分类展示与工艺故事。"
+>
+  <main class="home-page">
+    <div class="promo-bar">
+      Complimentary white-glove delivery on curated orders above $2,500. Hong Kong pricing shown.
+    </div>
+
+    <section class="hero">
+      <img class="hero-image" src={heroImage} alt="Luxury living room" />
+      <header class="topbar shell-wide">
+        <a class="brand" href="/">The Curated Home</a>
+
+        <nav class="nav-links" aria-label="Main navigation">
+          <a href="#collections">Collections</a>
+          <a href="#shop">Shop</a>
+          <a href="#story">About</a>
+          <a href="#journal">Journal</a>
+        </nav>
+
+        <div class="nav-actions" aria-label="Quick actions">
+          <a class="icon-action" href="/" aria-label="Search"><span></span></a>
+          <a class="icon-action cart-action" href="/" aria-label="Cart"><span></span></a>
+          <a class="icon-action profile-action" href="/" aria-label="Account"><span></span></a>
+        </div>
+      </header>
+
+      <div class="hero-overlay"></div>
+
+      <div class="hero-copy shell-wide">
+        <span class="kicker">Atelier Selection</span>
+        <h1>Curate Your Home with Heritage Furniture</h1>
+        <p>
+          Discover a collection of timeless pieces where artisanal craftsmanship meets
+          contemporary design for the modern atelier.
+        </p>
+
+        <div class="btn-row">
+          <a class="btn btn-primary" href="#collections">Explore Collections</a>
+          <a class="btn btn-ghost" href="#story">Our Story</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="brand-strip shell-wide" aria-label="Featured brands">
+      {brandStrip.map((brand) => (
+        <span>{brand}</span>
+      ))}
+    </section>
+
+    <section class="category-section shell-wide" id="collections">
+      <div class="section-head">
+        <span class="section-kicker">Navigation</span>
+        <h2>Shop by Category</h2>
+      </div>
+
+      <div class="category-grid">
+        {categories.map((category) => (
+          <article class={`category-card ${category.className}`}>
+            <img src={category.image} alt={category.name} loading="lazy" />
+            <div class="category-shade"></div>
+            <div class="category-copy">
+              <h3>{category.name}</h3>
+              <p>{category.subtitle}</p>
+            </div>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <section class="product-section" id="shop">
+      <div class="shell-wide">
+        <div class="section-head section-head-split">
+          <div>
+            <span class="section-kicker">The Selection</span>
+            <h2>Curated Essentials</h2>
+          </div>
+
+          <a class="section-link" href="/">View Full Catalog</a>
+        </div>
+
+        <div class="product-grid">
+          {products.map((product) => (
+            <article class="product-card">
+              <div class={`product-visual ${product.className}`}>
+                <img src={product.image} alt={product.name} loading="lazy" />
+                <span class="product-badge">New In</span>
+                <button class="bag-button" type="button" aria-label={`Add ${product.name} to cart`}>
+                  Bag
+                </button>
+              </div>
+
+              <h3>{product.name}</h3>
+              <p class="product-meta">{product.meta}</p>
+              <p class="product-price">{product.price}</p>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="story-section shell-wide" id="story">
+      <div class="story-media">
+        <div class="story-glow"></div>
+        <div class="story-photo primary-photo">
+          <img src={storyPrimaryImage} alt="Craftsmanship detail" loading="lazy" />
+        </div>
+        <div class="story-photo detail-photo">
+          <img src={storyDetailImage} alt="Linen upholstery detail" loading="lazy" />
+        </div>
+      </div>
+
+      <div class="story-copy">
+        <span class="section-kicker">Our Story</span>
+        <h2>Heritage Materials, Modern Hands</h2>
+        <p>
+          We believe furniture should be an heirloom, not a disposable commodity. Every
+          piece in our collection begins with raw, natural materials and the craft of
+          makers who understand their spirit.
+        </p>
+        <p>
+          Our process is deliberate and slow. We source sustainably harvested timber,
+          brushed metals, woven textiles, and shape them through small ateliers where the
+          human touch remains the defining characteristic.
+        </p>
+        <a class="story-link" href="/">Discover the Atelier</a>
+      </div>
+    </section>
+
+    <section class="lifestyle-section" id="journal">
+      <div class="shell">
+        <div class="lifestyle-card">
+          <img class="lifestyle-image" src={lifestyleImage} alt="Editorial living interior" loading="lazy" />
+          <div class="lifestyle-overlay"></div>
+          <div class="lifestyle-copy">
+            <span class="section-kicker light">Editorial Living</span>
+            <h2>The Architecture of Living</h2>
+            <p>
+              Experience the collection in the context of modern architectural spaces,
+              textured light, and quietly expressive interiors.
+            </p>
+            <a class="btn btn-light" href="/">Read the Journal</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <div class="footer-main shell-wide">
+        <section class="footer-brand">
+          <span class="footer-mark">The Curated Home</span>
+          <p>
+            Heritage furniture for the modern atelier. Quality that speaks through
+            silence.
+          </p>
+          <div class="footer-socials">
+            <a href="/">Instagram</a>
+            <a href="/">Pinterest</a>
+          </div>
+        </section>
+
+        {footerGroups.map((group) => (
+          <section class="footer-group">
+            <h3>{group.title}</h3>
+            <div class="footer-links">
+              {group.links.map((link) => (
+                <a href="/">{link}</a>
+              ))}
+            </div>
+          </section>
+        ))}
+
+        <section class="footer-newsletter">
+          <h3>Newsletter</h3>
+          <p>Join our inner circle for collection previews and artisanal stories.</p>
+          <form class="newsletter-form">
+            <input type="email" placeholder="email@address.com" />
+            <button type="submit">Join</button>
+          </form>
+        </section>
+      </div>
+
+      <div class="footer-bottom shell-wide">
+        <p>© 2024 The Curated Home. Heritage furniture for the modern atelier.</p>
+        <div class="footer-meta-links">
+          <a href="/">Shipping</a>
+          <a href="/">Privacy</a>
+          <a href="/">Returns</a>
+        </div>
+      </div>
+    </footer>
+  </main>
+
+  <style>
+    .home-page {
+      padding: 0 0 96px;
+    }
+
+    .promo-bar {
+      min-height: 42px;
+      display: grid;
+      place-items: center;
+      padding: 10px 20px;
+      background: #ece4db;
+      color: #5f4a3b;
+      font-size: 12px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      text-align: center;
+    }
+
+    .shell-wide {
+      width: min(1680px, calc(100% - 72px));
+      margin: 0 auto;
+    }
+
+    .hero {
+      position: relative;
+      min-height: 880px;
+      color: white;
+      background:
+        linear-gradient(180deg, rgba(31, 25, 20, 0.18), rgba(31, 25, 20, 0.3)),
+        radial-gradient(circle at 76% 18%, rgba(255, 217, 179, 0.28), transparent 22%),
+        linear-gradient(135deg, #90735b 0%, #6d5648 36%, #46372d 68%, #281f1a 100%);
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(circle at 22% 18%, rgba(255, 244, 230, 0.18), transparent 24%),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+        linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+      background-size: auto, 120px 120px, 120px 120px;
+      mix-blend-mode: screen;
+    }
+
+    .hero-image {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: 0;
+    }
+
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(90deg, rgba(26, 18, 13, 0.56) 0%, rgba(26, 18, 13, 0.12) 48%, rgba(26, 18, 13, 0.28) 100%);
+      z-index: 0;
+    }
+
+    .topbar {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 28px;
+      padding-top: 18px;
+      padding-bottom: 18px;
+    }
+
+    .brand {
+      font-family: "Cormorant Garamond", "Noto Serif SC", serif;
+      font-size: 31px;
+      letter-spacing: -0.02em;
+    }
+
+    .nav-links,
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      color: rgba(255, 255, 255, 0.78);
+      font-size: 14px;
+    }
+
+    .nav-links a {
+      letter-spacing: 0.02em;
+      text-transform: uppercase;
+      font-size: 12px;
+    }
+
+    .nav-links a:hover,
+    .nav-actions a:hover {
+      color: white;
+    }
+
+    .icon-action {
+      width: 26px;
+      height: 26px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+
+    .hero-copy {
+      position: relative;
+      z-index: 2;
+      display: grid;
+      gap: 24px;
+      padding-top: 196px;
+      padding-bottom: 148px;
+      max-width: 760px;
+    }
+
+    .kicker,
+    .section-kicker {
+      text-transform: uppercase;
+      letter-spacing: 0.22em;
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .hero .kicker {
+      color: rgba(255, 255, 255, 0.82);
+    }
+
+    .hero h1,
+    .section-head h2,
+    .story-copy h2,
+    .lifestyle-copy h2 {
+      margin: 0;
+      font-family: "Cormorant Garamond", "Noto Serif SC", serif;
+      font-weight: 600;
+      letter-spacing: -0.04em;
+    }
+
+    .hero h1 {
+      max-width: 12ch;
+      font-size: clamp(56px, 6vw, 86px);
+      line-height: 1.02;
+    }
+
+    .hero p,
+    .story-copy p,
+    .lifestyle-copy p {
+      margin: 0;
+      font-size: 18px;
+      line-height: 1.8;
+    }
+
+    .hero p {
+      max-width: 34rem;
+      color: rgba(255, 255, 255, 0.84);
+      font-size: 17px;
+    }
+
+    .brand-strip {
+      display: grid;
+      grid-template-columns: repeat(6, minmax(0, 1fr));
+      gap: 20px;
+      align-items: center;
+      padding-top: 26px;
+      padding-bottom: 22px;
+      border-bottom: 1px solid rgba(121, 95, 76, 0.12);
+      color: #736154;
+      font-size: 14px;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+    }
+  </style>
+</MainLayout>
